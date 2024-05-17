@@ -2,19 +2,24 @@
   "name": "ago-input-store-backend",
   "version": "1.0.0",
   "description": "Ago Input Store Backend",
-  "main": "index.js",
+  "main": "web.js",
   "scripts": {
     "start": "ts-node-dev --transpile-only --ignore-watch node_modules app.ts",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ago-input"
+  ],
+  "author": "julien",
+  "license": "MIT",
   "dependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.12",
     "express": "^4.19.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
