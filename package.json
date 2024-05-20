@@ -2,10 +2,12 @@
   "name": "ago-input-store-backend",
   "version": "1.0.0",
   "description": "Ago Input Store Backend",
-  "main": "web.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "ts-node-dev --transpile-only --ignore-watch node_modules src/app.ts",
-    "build": "tsc"
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "heroku-postbuild": "npm run build",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/app.ts"
   },
   "keywords": [
     "ago-input"
