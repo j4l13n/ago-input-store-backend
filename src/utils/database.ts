@@ -1,16 +1,24 @@
-import { Sequelize } from 'sequelize-typescript';
-import { config } from 'dotenv';
+import { Sequelize } from 'sequelize';
 
-config();
+const databaseUrl = process.env.DATABASE_URL || '';
 
-const sequelize = new Sequelize({
-  database: process.env.DB_NAME,
+const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  models: [__dirname + '../models'] // path to models
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 });
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch((err: any) => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 export default sequelize;
